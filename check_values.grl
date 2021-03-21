@@ -1,0 +1,15 @@
+rule CheckValues "Check the default values" salience 10 {
+	when
+		MF.IntAttribute == 123 && MF.StringAttribute == "Some string value"
+	then
+		MF.WhatToSay = MF.GetWhatToSay("Hello Grule!");
+		Retract("CheckValues");
+}
+
+rule CheckValuesV2 "Check the alternative" salience 10 {
+	when
+		MF.IntAttribute == 1234 && MF.StringAttribute == "Some string value"
+	then
+		MF.WhatToSay = MF.GetWhatToSay("Hello Grule v2!");
+		Retract("CheckValuesV2");
+}
